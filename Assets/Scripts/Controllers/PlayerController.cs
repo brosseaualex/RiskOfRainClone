@@ -101,10 +101,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void CheckInput()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
             hudController.ShowMenu();
-        }
+        }*/
 
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         mouseDelta = new Vector2(Input.GetAxis("Mouse X"), -Input.GetAxis("Mouse Y"));
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             LineRenderer bulletTrailClone = Instantiate(bulletTrailPrefab);
             bulletTrailClone.SetPositions(new Vector3[] { weapon.transform.position + new Vector3(0f, 0.05f, 0f), lineRendererEnd });
 
-            StartCoroutine(FadeLineRenderer(bulletTrailClone));
+            StartCoroutine(GameController.Instance.FadeLineRenderer(bulletTrailClone));
 
             stats.timeBeforeNextShot = Time.time + stats.rateOfFire;
         }
@@ -250,29 +250,5 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
     }
 
-    IEnumerator FadeLineRenderer(LineRenderer lineRenderer)
-    {
-        Gradient lineRendererGradient = new Gradient();
-        float fadeSpeed = 3f;
-        float timeElapsed = 0f;
-        float alpha = 1f;
-
-        while (timeElapsed < fadeSpeed)
-        {
-            alpha = Mathf.Lerp(1f, 0f, timeElapsed / fadeSpeed);
-
-            lineRendererGradient.SetKeys
-            (
-                lineRenderer.colorGradient.colorKeys,
-                new GradientAlphaKey[] { new GradientAlphaKey(alpha, 1f) }
-            );
-            lineRenderer.colorGradient = lineRendererGradient;
-
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        Destroy(lineRenderer.gameObject);
-    }
 }
 

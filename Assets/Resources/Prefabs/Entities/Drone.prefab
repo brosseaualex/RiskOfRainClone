@@ -108,12 +108,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8dd44e18f092154e85842d53ffac472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 5549384853402665647, guid: bf2a7d33e8f4d0046a81b7fe7c892ebb, type: 3}
   hp: 50
-  sightRange: 20
-  damageDealt: 0.1
-  enemyType: 0
+  sightRange: 30
+  minDamage: 1
+  maxDamage: 5
   flightSpeed: 3
   hoverHeight: 3.5
   distanceOffset: 2.5
-  shootDistance: 5
+  shootingRange: 15
+  rateOfFire: 0.5
+  bulletTrailPrefab: {fileID: 6585630990410282698, guid: 207e1632ed3ec504eba2742f48dd1e1b, type: 3}

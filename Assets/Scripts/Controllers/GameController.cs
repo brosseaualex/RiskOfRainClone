@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour
     {
         if(monoliths.Count == 0 && enemies.Count == 0)
         {
-            hasWon = true;
+            //hasWon = true;
         }
 
         return hasWon;
@@ -164,5 +164,30 @@ public class GameController : MonoBehaviour
         }
 
         return hasLost;
+    }
+
+    public IEnumerator FadeLineRenderer(LineRenderer lineRenderer)
+    {
+        Gradient lineRendererGradient = new Gradient();
+        float fadeSpeed = 3f;
+        float timeElapsed = 0f;
+        float alpha = 1f;
+
+        while (timeElapsed < fadeSpeed)
+        {
+            alpha = Mathf.Lerp(1f, 0f, timeElapsed / fadeSpeed);
+
+            lineRendererGradient.SetKeys
+            (
+                lineRenderer.colorGradient.colorKeys,
+                new GradientAlphaKey[] { new GradientAlphaKey(alpha, 1f) }
+            );
+            lineRenderer.colorGradient = lineRendererGradient;
+
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(lineRenderer.gameObject);
     }
 }

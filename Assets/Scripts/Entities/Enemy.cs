@@ -9,12 +9,12 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Transform target;
     Vector3 originalPosition;
     NavMeshAgent agent;
-    LineRenderer bulletTrailPrefab;
 
     [Header("Unit Settings")]
     public float hp = 50f;
     public float sightRange = 4f;
-    public float damageDealt = 0.1f;
+    public float minDamage = 0.1f;
+    public float maxDamage = 0.3f;
 
     protected virtual void Awake()
     {
@@ -39,8 +39,9 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (collision.transform.CompareTag("Player"))
         {
+            float damage = Random.Range(minDamage, maxDamage);
             //player = collision.gameObject.GetComponent<PlayerController>();
-            PlayerController.Instance.TakeDamage(damageDealt);
+            PlayerController.Instance.TakeDamage(damage);
         }
     }
 
