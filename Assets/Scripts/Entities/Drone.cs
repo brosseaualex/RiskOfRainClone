@@ -34,17 +34,24 @@ public class Drone : Enemy
 
         float distance = Vector3.Distance(playerPosition, enemyPosition);
 
-        if (distance < sightRange)
+        if (PlayerController.Instance.stats.hp > 0)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x + distanceOffset, target.position.y + hoverHeight, target.position.z + distanceOffset), flightSpeed * Time.deltaTime);
-        }
-
-        if (distance < shootingRange)
-        {
-            if (Time.time >= timeBeforeNextShot)
+            if (distance < sightRange)
             {
-                ShootPlayer();
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x + distanceOffset, target.position.y + hoverHeight, target.position.z + distanceOffset), flightSpeed * Time.deltaTime);
             }
+
+            if (distance < shootingRange)
+            {
+                if (Time.time >= timeBeforeNextShot)
+                {
+                    ShootPlayer();
+                }
+            }
+        }        
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, originalPosition, flightSpeed * Time.deltaTime);
         }        
     }
 
@@ -66,7 +73,8 @@ public class Drone : Enemy
             }
 
             lineRendererEnd = enemyhit.point;
-        } else
+        }
+        else
         {
             lineRendererEnd = target.position - transform.position * shootingRange;
         }

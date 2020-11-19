@@ -7,9 +7,9 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Collider unitCollider;
     protected Animator animator;
     protected Transform target;
-    Vector3 originalPosition;
-    NavMeshAgent agent;
-    MeshRenderer meshRenderer;
+    protected Vector3 originalPosition;
+    protected NavMeshAgent agent;
+    protected MeshRenderer meshRenderer;
 
     [Header("Unit Settings")]
     public float hp = 50f;
@@ -82,6 +82,5 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             agent.SetDestination(originalPosition);
         }
-
     }
 }
