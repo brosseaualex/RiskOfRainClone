@@ -19,6 +19,7 @@ public class Drone : Enemy
     protected override void Awake()
     {
         base.Awake();
+        unitCollider = GetComponent<SphereCollider>();
         transform.position += new Vector3(0f, 8f, 0f);
     }
 

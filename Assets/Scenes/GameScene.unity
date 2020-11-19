@@ -804,7 +804,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33906
+  m_Name: pb_Mesh26804
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -968,7 +968,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33894
+  m_Name: pb_Mesh26792
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1893,7 +1893,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33870
+  m_Name: pb_Mesh26490
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2747,7 +2747,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh33956
+  m_Name: pb_Mesh26960
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2922,22 +2922,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1432191711}
     m_Modifications:
-    - target: {fileID: 3414824915690294638, guid: 99148bac20812a846b8655a2cdd02d28, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414824915690294638, guid: 99148bac20812a846b8655a2cdd02d28, type: 3}
-      propertyPath: m_FontData.m_MinSize
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414824915690294638, guid: 99148bac20812a846b8655a2cdd02d28, type: 3}
-      propertyPath: m_FontData.m_MaxSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414824915795908297, guid: 99148bac20812a846b8655a2cdd02d28, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3414824916272994982, guid: 99148bac20812a846b8655a2cdd02d28, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2946,26 +2930,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2045309123}
-    - target: {fileID: 3414824917284288047, guid: 99148bac20812a846b8655a2cdd02d28, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414824917284288047, guid: 99148bac20812a846b8655a2cdd02d28, type: 3}
-      propertyPath: m_FontData.m_BestFit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414824917284288047, guid: 99148bac20812a846b8655a2cdd02d28, type: 3}
-      propertyPath: m_FontData.m_MinSize
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414824917284288047, guid: 99148bac20812a846b8655a2cdd02d28, type: 3}
-      propertyPath: m_FontData.m_MaxSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414824917421083048, guid: 99148bac20812a846b8655a2cdd02d28, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3414824917447319042, guid: 99148bac20812a846b8655a2cdd02d28, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

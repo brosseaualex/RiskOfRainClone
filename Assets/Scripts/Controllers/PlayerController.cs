@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour, IDamageable
                     //Debug.Log("Weapon damage: " + weaponDamage);
                 }
 
-                lineRendererEnd = raycastHit.point;
+                lineRendererEnd = playerRaycastHit.point;
 
                 //Debug.DrawRay(transform.position + new Vector3(0f, 1.6f, 0f), raycastHit.point - transform.position - new Vector3(0f, 1.6f, 0f), Color.red);
                 //Debug.Log("Pow " + playerRaycastHit.transform.name);

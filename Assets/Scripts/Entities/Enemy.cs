@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Transform target;
     Vector3 originalPosition;
     NavMeshAgent agent;
+    MeshRenderer meshRenderer;
 
     [Header("Unit Settings")]
     public float hp = 50f;
@@ -22,14 +23,17 @@ public class Enemy : MonoBehaviour, IDamageable
         agent = GetComponent<NavMeshAgent>();
         unitCollider = GetComponent<BoxCollider>();
         animator = GetComponent<Animator>();
+        meshRenderer = GetComponent<MeshRenderer>();
         originalPosition = transform.position;
     }
 
     protected virtual void Update()
     {
-        SearchPlayer();
-
-        if (hp <= 0)
+        if (hp > 0)
+        {
+            SearchPlayer();
+        }
+        else
         {
             OnDeath();
         }
@@ -40,7 +44,6 @@ public class Enemy : MonoBehaviour, IDamageable
         if (collision.transform.CompareTag("Player"))
         {
             float damage = Random.Range(minDamage, maxDamage);
-            //player = collision.gameObject.GetComponent<PlayerController>();
             PlayerController.Instance.TakeDamage(damage);
         }
     }
@@ -52,8 +55,10 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void OnDeath()
     {
+        meshRenderer.enabled = false;
+        unitCollider.enabled = false;
         GameController.Instance.RemoveEnemyFromList(gameObject);
-        Destroy(gameObject);
+        Destroy(gameObject, 3.5f);
     }
 
     protected virtual void SearchPlayer()
