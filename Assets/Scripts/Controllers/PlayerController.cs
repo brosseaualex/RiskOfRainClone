@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Tooltip("The weapon prefab position is only used to draw to bullet trail")]
     public GameObject weapon;
     [Header("Jump Settings")]
-    public float jumpForce = 40f;
+    public float baseJumpForce = 40f;
     public float extraGravity = 25f;
 
     JumpingState jumpingState;
@@ -101,10 +101,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void CheckInput()
     {
-        /*if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             hudController.ShowMenu();
-        }*/
+        }
 
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         mouseDelta = new Vector2(Input.GetAxis("Mouse X"), -Input.GetAxis("Mouse Y"));
@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             jumpingState = JumpingState.Jumping;
             Jump();
+            
         }
 
         if (shootPressed && isGrounded)
@@ -222,12 +223,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     void IsGrounded()
     {
         isGrounded = Physics.Raycast(unitCollider.bounds.center - unitCollider.bounds.extents + new Vector3(0.25f, 0.25f, 0.25f), -Vector3.up, 1.5f, LayerMask.GetMask("Ground", "Box"));
-        //Debug.Log(isGrounded);
     }
 
     void Jump()
     {
-        rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rigidBody.AddForce(Vector3.up * baseJumpForce, ForceMode.Impulse);
     }
 
     void AddExtraGravity()

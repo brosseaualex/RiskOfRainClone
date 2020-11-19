@@ -14,13 +14,14 @@ public class Drone : Enemy
     public float rateOfFire = 0.5f;
     public LineRenderer bulletTrailPrefab;
 
+    float spawnHeight = 8f;
     float timeBeforeNextShot = 0f;
 
     protected override void Awake()
     {
         base.Awake();
         unitCollider = GetComponent<SphereCollider>();
-        transform.position += new Vector3(0f, 8f, 0f);
+        transform.position += new Vector3(0f, spawnHeight, 0f);
     }
 
     protected override void SearchPlayer()

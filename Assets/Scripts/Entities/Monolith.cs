@@ -8,8 +8,10 @@ public class Monolith : MonoBehaviour, IDamageable
     public float hp = 250;
     public float enemySpawnDelayMin = 3f;
     public float enemySpawnDelayMax = 8f;
-    private float enemySpawnDelay;
-    private float timeUntilNextSpawn = 0f;
+    float enemySpawnDelay;
+    float timeUntilNextSpawn = 0f;
+    float spawnRadiusMin = -8f;
+    float spawnRadiusMax = 8f;
 
     public GameObject fireParticles;
     public GameObject[] enemyPrefabs;
@@ -56,7 +58,7 @@ public class Monolith : MonoBehaviour, IDamageable
     {
         int rndEnemy = Random.Range(0, enemyPrefabs.Length);
 
-        GameObject enemyClone = Instantiate(enemyPrefabs[rndEnemy], new Vector3(transform.position.x + Random.Range(-8, 8), transform.position.y, transform.position.z + Random.Range(-8, 8)), Quaternion.identity);
+        GameObject enemyClone = Instantiate(enemyPrefabs[rndEnemy], new Vector3(transform.position.x + Random.Range(spawnRadiusMin, spawnRadiusMax), transform.position.y, transform.position.z + Random.Range(-8, 8)), Quaternion.identity);
         enemyClone.transform.SetParent(GameController.Instance.enemyParent.transform);
         GameController.Instance.AddEnemyToList(enemyClone);
     }

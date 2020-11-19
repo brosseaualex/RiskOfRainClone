@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour
     {
         if(monoliths.Count == 0 && enemies.Count == 0)
         {
-            //hasWon = true;
+            hasWon = true;
         }
 
         return hasWon;
