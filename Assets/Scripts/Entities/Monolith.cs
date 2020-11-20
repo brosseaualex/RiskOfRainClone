@@ -106,7 +106,7 @@ public class Monolith : MonoBehaviour, IDamageable
 
     void IsGrounded()
     {
-        isGrounded = Physics.Raycast(monolithCollider.bounds.center - monolithCollider.bounds.extents + new Vector3(0f, 0.1f, 0f), -Vector3.up, 5f, LayerMask.GetMask("Ground"));
+        isGrounded = Physics.Raycast(monolithCollider.bounds.center - monolithCollider.bounds.extents, -Vector3.up, 5f, LayerMask.GetMask("Ground"));
 
         if (isGrounded)
         {
