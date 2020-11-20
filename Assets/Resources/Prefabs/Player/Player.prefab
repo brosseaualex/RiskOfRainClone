@@ -1735,14 +1735,16 @@ MonoBehaviour:
   rigidBody: {fileID: 3826216020757154225}
   unitCollider: {fileID: 1520196417}
   animator: {fileID: 578191962}
-  bulletTrailPrefab: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011, type: 3}
   gunTipPosition: {fileID: 519825149}
+  bulletTrailPrefab: {fileID: 6585630990410282698, guid: 2fd8abd997998a345929579ba2861011, type: 3}
   muzzleFlashParticles: {fileID: 6222849684098515384}
   cartridgeEjectionParticles: {fileID: 6222849690125088373}
   walkSpeed: 5
   runSpeed: 10
   maxSpeed: 14
   currentSpeed: 0
+  baseJumpForce: 40
+  extraGravity: 25
   stats:
     hp: 100
     maxHp: 100
@@ -1754,9 +1756,6 @@ MonoBehaviour:
     gunHitLayers:
       serializedVersion: 2
       m_Bits: 4096
-  weapon: {fileID: 6116854932380739452}
-  baseJumpForce: 40
-  extraGravity: 25
 --- !u!82 &1016191255
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2579,7 +2578,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25
-  m_Height: 1.85
+  m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: -0.2, z: 0}
 --- !u!1 &8398652713634082177
@@ -2840,11 +2839,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a21925963ad72641b17d3da3e0c173f, type: 3}
---- !u!1 &6116854932380739452 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: 9a21925963ad72641b17d3da3e0c173f, type: 3}
-  m_PrefabInstance: {fileID: 6116854932380836312}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6116854932380449628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 9a21925963ad72641b17d3da3e0c173f, type: 3}
