@@ -2909,7 +2909,7 @@ MonoBehaviour:
   gameStartMonolithCount: 3
   monolithSpawnDelayMin: 30
   monolithSpawnDelayMax: 75
-  monolithPrefab: {fileID: 4276926980979107524, guid: a9545ff640ce11e4d80a299e76d2e271, type: 3}
+  monolithPrefab: {fileID: 2773640142720315611, guid: 01b943b071f4a084bb486782b020c92c, type: 3}
   monoliths: []
   enemies: []
   hasWon: 0

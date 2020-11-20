@@ -95,7 +95,6 @@ public class Monolith : MonoBehaviour, IDamageable
             monolithRb.isKinematic = true;
             transform.position -= new Vector3(0f, 5.5f, 0f);
             navMeshObstacle.carving = true;
-            fireParticles.gameObject.SetActive(false);
 
             enemySpawnDelay = Random.Range(enemySpawnDelayMin, enemySpawnDelayMax);
             timeUntilNextSpawn = Time.time + enemySpawnDelay;

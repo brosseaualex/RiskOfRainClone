@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     public Rigidbody rigidBody;
     public CapsuleCollider unitCollider;
     public Animator animator;
-    public LineRenderer bulletTrailPrefab;
     public GameObject gunTipPosition;
+    public LineRenderer bulletTrailPrefab;    
     public ParticleSystem muzzleFlashParticles;
     public ParticleSystem cartridgeEjectionParticles;
     AudioSource gunSound;
@@ -50,15 +50,12 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float maxSpeed = 14f;
     [HideInInspector]
     public float currentSpeed;
-
-    public EntityStats stats;
-
-    [Header("Weapon Prefab")]
-    [Tooltip("The weapon prefab position is only used to draw to bullet trail")]
-    public GameObject weapon;
     [Header("Jump Settings")]
     public float baseJumpForce = 40f;
+    [Tooltip("The extra gravity is applied when player jumps to remove a bit of the 'floaty' feel when landing")]
     public float extraGravity = 25f;
+
+    public EntityStats stats;    
 
     JumpingState jumpingState;
     Vector2 movement;
@@ -183,7 +180,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             }
             else
             {
-                lineRendererEnd = weapon.transform.position + ray.direction * stats.weaponRange;
+                lineRendererEnd = gunTipPosition.transform.position + ray.direction * stats.weaponRange;
             }
 
             LineRenderer bulletTrailClone = Instantiate(bulletTrailPrefab);
