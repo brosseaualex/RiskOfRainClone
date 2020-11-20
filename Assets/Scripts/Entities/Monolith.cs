@@ -13,14 +13,18 @@ public class Monolith : MonoBehaviour, IDamageable
     float spawnRadiusMin = -8f;
     float spawnRadiusMax = 8f;
 
-    public GameObject fireParticles;
+    public ParticleSystem explosionParticlesPrefab;
+    public GameObject fireParticlesParent;
+    public GameObject smokeParticlesParent;
     public GameObject[] enemyPrefabs;
     public GameObject[] pickupsPrefab;
     public int pickupMinSpawn = 3;
     public int pickupMaxSpawn = 6;
 
-    public bool isGrounded;
+    bool isGrounded;
+    bool isDead;
     MeshCollider monolithCollider;
+    MeshRenderer monolithRenderer;
     Rigidbody monolithRb;
     AudioSource audioSource;
     NavMeshObstacle navMeshObstacle;
@@ -29,6 +33,7 @@ public class Monolith : MonoBehaviour, IDamageable
     void Awake()
     {
         monolithCollider = GetComponent<MeshCollider>();
+        monolithRenderer = GetComponent<MeshRenderer>();
         monolithRb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         navMeshObstacle = GetComponent<NavMeshObstacle>();
@@ -53,7 +58,7 @@ public class Monolith : MonoBehaviour, IDamageable
             timeUntilNextSpawn = Time.time + enemySpawnDelay;
         }
 
-        if (hp <= 0)
+        if (hp <= 0 && !isDead)
         {
             OnDeath();
         }
@@ -78,9 +83,19 @@ public class Monolith : MonoBehaviour, IDamageable
 
     void OnDeath()
     {
+        isDead = true;
+        timeUntilNextSpawn = 10f;
+        monolithCollider.enabled = false;
+        monolithRenderer.enabled = false;
+        fireParticlesParent.SetActive(false);
+        smokeParticlesParent.SetActive(false);
+
+        ParticleSystem explosionClone = Instantiate(explosionParticlesPrefab, transform.position += new Vector3(0f, 2f, 0f), Quaternion.identity);
+
         SpawnPickups();
         GameController.Instance.RemoveMonolithFromList(gameObject);
-        Destroy(gameObject);
+        Destroy(explosionClone.gameObject, 3.9f);
+        Destroy(gameObject, 4.5f);
     }
 
     void IsGrounded()

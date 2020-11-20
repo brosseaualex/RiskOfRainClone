@@ -18376,11 +18376,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100719692647557628}
   m_LocalRotation: {x: -0.49814007, y: -0.50185317, z: -0.50185305, w: 0.49814007}
-  m_LocalPosition: {x: 2.5700073, y: 1.865, z: -0.5700073}
+  m_LocalPosition: {x: 2.5700073, y: 1.8649998, z: -0.5700073}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
-  m_Father: {fileID: 2773640142720318185}
-  m_RootOrder: 0
+  m_Father: {fileID: 2773640142720319262}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &2100719692647557631
 ParticleSystem:
@@ -78092,12 +78092,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2773640141925020221}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.12, y: 5.82, z: -1.62}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.119995, y: 5.8199997, z: -1.6199951}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2773640142720318185}
-  m_RootOrder: 3
+  m_Father: {fileID: 2773640142720319262}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &2773640141925020223
 Light:
@@ -78178,7 +78178,7 @@ GameObject:
   - component: {fileID: 2773640142720318219}
   - component: {fileID: 2773640142720318273}
   m_Layer: 12
-  m_Name: Monolith 1
+  m_Name: Monolith
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78195,10 +78195,8 @@ Transform:
   m_LocalPosition: {x: 149.97142, y: 3.5738142, z: 182.86522}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2100719692647557629}
   - {fileID: 2773640142720319262}
   - {fileID: 2773640142720318512}
-  - {fileID: 2773640141925020222}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78605,10 +78603,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94c9a86ab1df55458fc2836eb9692db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 250
+  hp: 10
   enemySpawnDelayMin: 5
   enemySpawnDelayMax: 10
-  fireParticles: {fileID: 2773640142720316848}
+  explosionParticlesPrefab: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
+  fireParticlesParent: {fileID: 2773640142720316848}
+  smokeParticlesParent: {fileID: 2773640142720316409}
   enemyPrefabs:
   - {fileID: 2218334790041944620, guid: 277a2d844a92a2b4388af76916c879ed, type: 3}
   - {fileID: 7983833425952509725, guid: aa39c151ad9c5bd4a874e22b2a6f9610, type: 3}
@@ -78617,7 +78617,6 @@ MonoBehaviour:
   - {fileID: 8881894923977334309, guid: 781020cefa7dfb34a887fb9697e3b46b, type: 3}
   pickupMinSpawn: 3
   pickupMaxSpawn: 6
-  isGrounded: 0
 --- !u!208 &2773640142720318273
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -78644,7 +78643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2773640142720318512}
   m_Layer: 12
-  m_Name: SmokeParticles
+  m_Name: SmokeParticlesParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78673,7 +78672,7 @@ Transform:
   - {fileID: 2773640142369885408}
   - {fileID: 2773640142626941672}
   m_Father: {fileID: 2773640142720318185}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2773640142720316848
 GameObject:
@@ -78710,8 +78709,10 @@ Transform:
   - {fileID: 2100719693275475182}
   - {fileID: 2100719693915618287}
   - {fileID: 2100719692793864506}
+  - {fileID: 2100719692647557629}
+  - {fileID: 2773640141925020222}
   m_Father: {fileID: 2773640142720318185}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &47685268754138196
 PrefabInstance:
