@@ -529,8 +529,8 @@ MonoBehaviour:
   enemySpawnDelayMax: 10
   fireParticles: {fileID: 4276926980979106735}
   enemyPrefabs:
+  - {fileID: 2218334790041944620, guid: 277a2d844a92a2b4388af76916c879ed, type: 3}
   - {fileID: 7983833425952509725, guid: aa39c151ad9c5bd4a874e22b2a6f9610, type: 3}
-  - {fileID: 3863992599360199389, guid: 5a1f601ce8d5a0848a7a63b9b7504836, type: 3}
   pickupsPrefab:
   - {fileID: 3557709914077718436, guid: 22b485ab70762854093a56b4141d3421, type: 3}
   - {fileID: 8881894923977334309, guid: 781020cefa7dfb34a887fb9697e3b46b, type: 3}

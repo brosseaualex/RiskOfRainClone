@@ -101,10 +101,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void CheckInput()
     {
-        /*if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             hudController.ShowMenu();
-        }*/
+        }
 
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         mouseDelta = new Vector2(Input.GetAxis("Mouse X"), -Input.GetAxis("Mouse Y"));

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 50
-  sightRange: 30
+  sightRange: 25
   minDamage: 1
   maxDamage: 5
   flightSpeed: 3
