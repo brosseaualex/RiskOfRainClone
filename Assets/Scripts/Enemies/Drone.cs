@@ -13,16 +13,17 @@ public class Drone : Enemy
     public float shootingRange = 12f;
     public float rateOfFire = 0.5f;
     public LineRenderer bulletTrailPrefab;
+    public ParticleSystem explosionPrefab;
 
     float spawnHeight = 8f;
     float timeBeforeNextShot = 0f;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         meshRenderer = GetComponent<MeshRenderer>();
         unitCollider = GetComponent<SphereCollider>();
         transform.position += new Vector3(0f, spawnHeight, 0f);
-        originalPosition += new Vector3(0f, spawnHeight, 0f);
     }
 
     protected override void SearchPlayer()
@@ -46,10 +47,6 @@ public class Drone : Enemy
                     ShootPlayer();
                 }
             }
-        }
-        else
-        {
-            transform.position = Vector3.MoveTowards(transform.position, originalPosition, flightSpeed * Time.deltaTime);
         }
     }
 
@@ -87,12 +84,12 @@ public class Drone : Enemy
 
     protected override void OnDeath()
     {
-        //isDead = true;
-        //agent.speed = 0;
-        //animator.SetBool("HasDied", true);
+        isDead = true;
+        ParticleSystem explosionClone = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         meshRenderer.enabled = false;
         unitCollider.enabled = false;
         GameController.Instance.RemoveEnemyFromList(gameObject);
+        Destroy(explosionClone.gameObject, 1.95f);
         Destroy(gameObject, 5f);
     }
 

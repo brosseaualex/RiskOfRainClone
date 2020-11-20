@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class GroundEnemy : Enemy
 {
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         agent = GetComponent<NavMeshAgent>();
         unitCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();

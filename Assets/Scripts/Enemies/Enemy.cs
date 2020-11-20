@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Collider unitCollider;
     protected Animator animator;
     protected Transform target;
-    protected Vector3 originalPosition;
     protected NavMeshAgent agent;
     protected MeshRenderer meshRenderer;
     protected Vector3 agentVelocity;
@@ -19,10 +18,13 @@ public class Enemy : MonoBehaviour, IDamageable
     public float maxDamage = 0.3f;
     protected bool isDead;
 
-    protected virtual void Update()
+    protected virtual void Awake()
     {
         target = PlayerController.Instance.transform;
+    }
 
+    protected virtual void Update()
+    {
         if (hp > 0)
         {
             SearchPlayer();
