@@ -78594,7 +78594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94c9a86ab1df55458fc2836eb9692db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 250
   enemySpawnDelayMin: 5
   enemySpawnDelayMax: 10
   explosionParticlesPrefab: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
