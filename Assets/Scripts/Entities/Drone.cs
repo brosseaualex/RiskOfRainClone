@@ -22,6 +22,7 @@ public class Drone : Enemy
         base.Awake();
         unitCollider = GetComponent<SphereCollider>();
         transform.position += new Vector3(0f, spawnHeight, 0f);
+        originalPosition += new Vector3(0f, spawnHeight, 0f);
     }
 
     protected override void SearchPlayer()
@@ -34,12 +35,9 @@ public class Drone : Enemy
 
         float distance = Vector3.Distance(playerPosition, enemyPosition);
 
-        if (PlayerController.Instance.stats.hp > 0)
+        if (PlayerController.Instance.stats.hp > 0 && distance < sightRange)
         {
-            if (distance < sightRange)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x + distanceOffset, target.position.y + hoverHeight, target.position.z + distanceOffset), flightSpeed * Time.deltaTime);
-            }
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x + distanceOffset, target.position.y + hoverHeight, target.position.z + distanceOffset), flightSpeed * Time.deltaTime);
 
             if (distance < shootingRange)
             {
@@ -48,11 +46,11 @@ public class Drone : Enemy
                     ShootPlayer();
                 }
             }
-        }        
+        }
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, originalPosition, flightSpeed * Time.deltaTime);
-        }        
+        }
     }
 
     void ShootPlayer()

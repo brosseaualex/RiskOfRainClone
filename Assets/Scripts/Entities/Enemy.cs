@@ -71,12 +71,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
         float distance = Vector3.Distance(playerPosition, enemyPosition);
 
-        if (PlayerController.Instance.stats.hp > 0)
+        if (PlayerController.Instance.stats.hp > 0 && distance < sightRange)
         {
-            if (distance < sightRange)
-            {
-                agent.SetDestination(target.position);
-            }
+            agent.SetDestination(target.position);
         }
         else
         {
