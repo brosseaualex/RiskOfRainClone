@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     public CapsuleCollider unitCollider;
     public Animator animator;
     public LineRenderer bulletTrailPrefab;
+    public GameObject bulletTrailPosition;
+    public ParticleSystem muzzleFlash;
     AudioSource gunSound;
 
     [Header("Unit Settings")]
@@ -184,9 +186,11 @@ public class PlayerController : MonoBehaviour, IDamageable
             }
 
             LineRenderer bulletTrailClone = Instantiate(bulletTrailPrefab);
-            bulletTrailClone.SetPositions(new Vector3[] { weapon.transform.position + new Vector3(0f, 0.05f, 0f), lineRendererEnd });
+            bulletTrailClone.SetPositions(new Vector3[] { bulletTrailPosition.transform.position, lineRendererEnd });
 
             StartCoroutine(GameController.Instance.FadeLineRenderer(bulletTrailClone));
+
+            muzzleFlash.Play();
 
             stats.timeBeforeNextShot = Time.time + stats.rateOfFire;
         }

@@ -52,6 +52,11 @@ public class Monolith : MonoBehaviour, IDamageable
             enemySpawnDelay = Random.Range(enemySpawnDelayMin, enemySpawnDelayMax);
             timeUntilNextSpawn = Time.time + enemySpawnDelay;
         }
+
+        if (hp <= 0)
+        {
+            OnDeath();
+        }
     }
 
     public void SpawnEnemy()
@@ -65,20 +70,13 @@ public class Monolith : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        if (hp <= 0)
+        if (isGrounded)
         {
-            OnDeath();
-        }
-        else
-        {
-            if (isGrounded)
-            {
-                hp -= damage;
-            }
+            hp -= damage;
         }
     }
 
-    public void OnDeath()
+    void OnDeath()
     {
         SpawnPickups();
         GameController.Instance.RemoveMonolithFromList(gameObject);
@@ -106,7 +104,7 @@ public class Monolith : MonoBehaviour, IDamageable
 
     void SpawnPickups()
     {
-        int spawnQty = Random.Range(pickupMinSpawn, pickupMaxSpawn + 1);        
+        int spawnQty = Random.Range(pickupMinSpawn, pickupMaxSpawn + 1);
 
         for (int i = 0; i < spawnQty; i++)
         {
