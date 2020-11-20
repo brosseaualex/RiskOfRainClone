@@ -14,6 +14,7 @@ public class Drone : Enemy
     public float rateOfFire = 0.5f;
     public LineRenderer bulletTrailPrefab;
     public ParticleSystem explosionPrefab;
+    public AudioSource explosionAudioSource;
 
     float spawnHeight = 8f;
     float timeBeforeNextShot = 0f;
@@ -86,6 +87,7 @@ public class Drone : Enemy
     {
         isDead = true;
         ParticleSystem explosionClone = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        explosionAudioSource.Play();
         meshRenderer.enabled = false;
         unitCollider.enabled = false;
         GameController.Instance.RemoveEnemyFromList(gameObject);
