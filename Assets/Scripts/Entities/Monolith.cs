@@ -28,7 +28,8 @@ public class Monolith : MonoBehaviour, IDamageable
     Rigidbody monolithRb;
     AudioSource audioSource;
     NavMeshObstacle navMeshObstacle;
-    AudioClip monolithCrashSound;
+    AudioClip monolithCrashClip;
+    AudioClip monolithExplosionClip;
 
     void Awake()
     {
@@ -37,7 +38,8 @@ public class Monolith : MonoBehaviour, IDamageable
         monolithRb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         navMeshObstacle = GetComponent<NavMeshObstacle>();
-        monolithCrashSound = Resources.Load<AudioClip>("Sounds/Monolith_Crash");
+        monolithCrashClip = Resources.Load<AudioClip>("Sounds/Monolith_Crash");
+        monolithExplosionClip = Resources.Load<AudioClip>("Sounds/Monolith_Explosion");
     }
 
     void Update()
@@ -90,7 +92,11 @@ public class Monolith : MonoBehaviour, IDamageable
         fireParticlesParent.SetActive(false);
         smokeParticlesParent.SetActive(false);
 
-        ParticleSystem explosionClone = Instantiate(explosionParticlesPrefab, transform.position += new Vector3(0f, 2f, 0f), Quaternion.identity);
+        audioSource.clip = monolithExplosionClip;
+        audioSource.spatialBlend = 0.5f;
+        audioSource.Play();
+
+        ParticleSystem explosionClone = Instantiate(explosionParticlesPrefab, monolithRenderer.bounds.center, Quaternion.identity);
 
         SpawnPickups();
         GameController.Instance.RemoveMonolithFromList(gameObject);
@@ -105,7 +111,7 @@ public class Monolith : MonoBehaviour, IDamageable
         if (isGrounded)
         {
             audioSource.Stop();
-            audioSource.clip = monolithCrashSound;
+            audioSource.clip = monolithCrashClip;
             audioSource.Play();
             monolithRb.isKinematic = true;
             transform.position -= new Vector3(0f, 5.5f, 0f);
