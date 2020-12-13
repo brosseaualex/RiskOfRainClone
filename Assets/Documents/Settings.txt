@@ -1,9 +1,0 @@
-Texture Quality - Dropdown
-Anisotropic Textures - Dropdown
-Antialiasing - Dropdown
-Soft Particles - Check
-Realtime Reflection
-
-- Shadows -
-Shadow Resolution - Dropdown
-Shadow Distance - Slider
